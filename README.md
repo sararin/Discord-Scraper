@@ -35,6 +35,6 @@ Let the script run (it may take a while to finish) the beta version of this scri
 # Changelog (DD-MM-YYYY)
 
 03-10-2017 - Beta Release:
-	* The first release of the script.
-	* Not meant for production use.
-	* Still has bugs to fix and features to implement.
+* The first release of the script.
+* Not meant for production use.
+* Still has bugs to fix and features to implement.

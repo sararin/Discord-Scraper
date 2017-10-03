@@ -7,6 +7,14 @@ settings = {
     'Query': 'has=image&has=video&include_nsfw=true'
 }
 
+def grabJSON():
+    opener = urllib2.build_opener()
+    opener.addheaders = [
+        ('User-agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36 OPR/48.0.2685.32'),
+        ('authorization', settings['Token'])
+    ]
+    urllib2.install_opener(opener)
+
 def grabData(location, filename):
     newopener = urllib2.build_opener()
     newopener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36 OPR/48.0.2685.32')]
@@ -26,18 +34,10 @@ def grabData(location, filename):
     
 
 if __name__ == '__main__':
-    opener = urllib2.build_opener()
-    opener.addheaders = [
-        ('User-agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36 OPR/48.0.2685.32'),
-        ('authorization', settings['Token'])
-    ]
-    urllib2.install_opener(opener)
-    
-    url = 'https://discordapp.com/api/v6/guilds/{}/messages/search?{}&channel_id={}'.format(settings['ServerID'], settings['Query'], settings['ChannelID'])
     pages = input('Enter number of pages to grab: ')
-
     for x in xrange(pages):
-        url = '{}&offset={}'.format(url, (25*x))
+        grabJSON()
+        url = 'https://discordapp.com/api/v6/guilds/{}/messages/search?{}&channel_id={}&offset={}'.format(settings['ServerID'], settings['Query'], settings['ChannelID'], (25*x))
 
         try:
             read = urllib2.urlopen(url).read()

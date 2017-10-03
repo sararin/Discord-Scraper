@@ -34,6 +34,11 @@ Let the script run (it may take a while to finish) the beta version of this scri
 
 # Changelog (DD-MM-YYYY)
 
+03-10-2017 - Beta Fix #1:
+* Fixed issue with URL appending offset query information ad infinitum.
+* Fixed issue with uninitialized opener data when grabbing multiple pages of JSON data.
+* Added new function to allow for the resetting of opener data when grabbing JSON data.
+
 03-10-2017 - Beta Release:
 * The first release of the script.
 * Not meant for production use.

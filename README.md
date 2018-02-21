@@ -38,7 +38,7 @@ Let the script run (it may take a while to finish) the beta version of this scri
 
 # Changelog (DD-MM-YYYY)
 
-02-21-2018 - Beta Update #1:
+21-02-2018 - Beta Update #1:
 * Updated this readme to include warning information
 * Created a version for those running Python 3
 * Updated the Python 2 version to match the Python 3 version with threading support

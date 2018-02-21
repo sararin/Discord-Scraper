@@ -2,9 +2,6 @@
 
 Release Date: October 3, 2017 @ 10:13 UTC-0
 
-Testing Version of Python: 2.7.14
-Target Version of Python: >= 2.7.8
-
 # Tutorial
 
 Step 1:
@@ -32,7 +29,19 @@ Make sure that you put the Discord.py script in its own folder since all content
 Run the Discord.py script and it should prompt you for the number of pages to grab (this coincides with the page number from the search query) the general rule is 25 contents per page, so 2 pages would equate to about 50 items.
 Let the script run (it may take a while to finish) the beta version of this script is designed to halt upon error, but the final release of this script will ignore errors and continue grabbing data as demanded.
 
+# Warning
+
+**Do not run these scripts if you meet any of these limitations:**
+* A CPU that is prone to overheating
+* A metered internet connection (monthly bandwidth caps)
+* A storage device that is low on available space
+
 # Changelog (DD-MM-YYYY)
+
+02-21-2018 - Beta Update #1:
+* Updated this readme to include warning information
+* Created a version for those running Python 3
+* Updated the Python 2 version to match the Python 3 version with threading support
 
 03-10-2017 - Beta Fix #1:
 * Fixed issue with URL appending offset query information ad infinitum.

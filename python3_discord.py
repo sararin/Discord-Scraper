@@ -1,5 +1,10 @@
-import threading, requests, urllib3, shutil, json, sys, os
+import threading, requests, urllib3, random, shutil, json, sys, os
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+def RandomString(length=5):
+    charset, output = 'abcdefghijklmnopqrstuvwxyz0123456789', ''
+    for i in range(length): output = output + charset[random.randrange(0, len(charset)-1)]
+    return output
 
 class Discord:
     def __init__(self):
@@ -21,7 +26,8 @@ class Discord:
         rawFileData = requests.get(fileUrl, stream=True)
         if rawFileData.status_code == requests.codes.ok:
             rawFileName = os.path.join(dataPath, fileUrl.split('/')[-1])
-                    
+
+            if os.path.exists(rawFileName): rawFileName = os.path.join(dataPath, '{}-{}'.format(RandomString(8), fileUrl.split('/')[-1]))
             with open(rawFileName, 'wb') as fileStream:
                 shutil.copyfileobj(rawFileData.raw, fileStream)
                         
@@ -33,7 +39,7 @@ if __name__ == '__main__':
     numPages, folderName, dataArray = int(input('Pages to scrape: ')), 'discord_scrapes', []
     dataPath = os.path.join(os.getcwd(), folderName)
     if not os.path.exists(dataPath): os.mkdir(dataPath)
-
+    
     for i in range(numPages):
         jsonData = discord.grabJSON(i)
 
@@ -49,8 +55,7 @@ if __name__ == '__main__':
 
     for thread in threads:
         thread.start()
-
-        if not thread.isAlive:
-            threads.remove(thread)
+        thread.join()
 
     del threads[:]
+    

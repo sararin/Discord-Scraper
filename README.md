@@ -38,6 +38,10 @@ Let the script run (it may take a while to finish) the beta version of this scri
 
 # Changelog (DD-MM-YYYY)
 
+07-04-2018 - Beta Fix #3:
+* Fixed threading issue (too many concurrent threads)
+* Fixed filename issues when grabbing files with similar filenames (still a potential issue with large amounts of files but significantly less issues)
+
 07-04-2018 - Beta Fix #2:
 * Fixed problems when downloading from channels with less than 25 images/videos as the older scripts assumed more than 25 images/videos in the channel.
 * I will incorporate a better method of grabbing images where there's less corruptions and less missing photos.

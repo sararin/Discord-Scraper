@@ -1,4 +1,9 @@
-import threading, urllib2, json, sys, os
+import threading, urllib2, random, json, sys, os
+
+def RandomString(length=5):
+    charset, output = 'abcdefghijklmnopqrstuvwxyz0123456789', ''
+    for i in range(length): output = output + charset[random.randrange(0, len(charset)-1)]
+    return output
 
 class Discord:
     def __init__(self):
@@ -20,6 +25,8 @@ class Discord:
     def saveFile(self, fileUrl, dataPath):
         try:
             rawFileData, rawFileName = urllib2.urlopen(fileUrl).read(), os.path.join(dataPath, fileUrl.split('/')[-1])
+
+            if os.path.exists(rawFileName): rawFileName = os.path.join(dataPath, '{}-{}'.format(RandomString(8), fileUrl.split('/')[-1]))
             with open(rawFileName, 'wb') as fileStream:
                 fileStream.write(rawFileData)
 
@@ -48,8 +55,6 @@ if __name__ == '__main__':
 
     for thread in threads:
         thread.start()
-
-        if not thread.isAlive:
-            threads.remove(thread)
+        thread.join()
 
     del threads[:]

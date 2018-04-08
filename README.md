@@ -38,13 +38,10 @@ Let the script run (it may take a while to finish) the beta version of this scri
 
 # Changelog (DD-MM-YYYY)
 
-<<<<<<< HEAD
 07-04-2018 - Beta Fix #2:
 * Fixed problems when downloading from channels with less than 25 images/videos as the older scripts assumed more than 25 images/videos in the channel.
 * I will incorporate a better method of grabbing images where there's less corruptions and less missing photos.
 
-=======
->>>>>>> 3e272ecb92bdf9fb650c992dbb20a9cdebeb476e
 21-02-2018 - Beta Update #1:
 * Updated this readme to include warning information
 * Created a version for those running Python 3

@@ -7,7 +7,7 @@ class Discord:
         self.channel    = '<CHANNEL ID>'
         self.query      = 'has=image&has=video&include_nsfw=true'
 
-    def grabJSON(self, page=1):
+    def grabJSON(self, page=0):
         url, opener = 'https://discordapp.com/api/v6/guilds/{}/messages/search?{}&channel_id={}&offset={}'.format(self.server, self.query, self.channel, page * 25), urllib2.build_opener()
         opener.addheaders = [('User-agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) discord/0.0.300 Chrome/56.0.2924.87 Discord/1.6.15 Safari/537.36'), ('authorization', self.token)]
         urllib2.install_opener(opener)
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     dataPath = os.path.join(os.getcwd(), folderName)
     if not os.path.exists(dataPath): os.mkdir(dataPath)
 
-    for i in range(1, numPages + 1):
+    for i in range(numPages):
         jsonData = discord.grabJSON(i)
 
         for messages in jsonData['messages']:
